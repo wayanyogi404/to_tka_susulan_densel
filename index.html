@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekap Data Susulan TO TKA 6 Densel</title>
+	<link rel="icon" type="image/x-icon" href="https://lh3.googleusercontent.com/d/1uA5-zj-MfW9X8FuPggl8A2qR_UbdoW8l">
+    <style>
+        :root {
+            --primary: #1e3a8a; 
+            --accent: #2563eb; 
+            --bg-start: #e0f2fe; 
+            --bg-end: #bfdbfe; 
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --field-label: #64748b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            color: var(--text-main);
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 650px;
+        }
+
+        /* Styling untuk Header Logo */
+        .logo-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .logo-img {
+            max-width: 140px; /* Ukuran proporsional untuk header */
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 8px; /* Sedikit lengkungan pada sudut logo */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 1rem;
+            margin-bottom: 0;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            color: var(--field-label);
+            font-size: 0.95rem;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-family: inherit;
+            background: #f8fafc;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+            background: white;
+        }
+
+        /* Grid container untuk pasangan nilai */
+        .grid-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            background: #f1f5f9;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--accent);
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        button:disabled {
+            background-color: #94a3b8;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .alert {
+            display: none;
+            padding: 1.2rem;
+            margin-top: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .alert.success { background-color: #dcfce3; color: #166534; display: block; }
+        .alert.error { background-color: #fee2e2; color: #991b1b; display: block; }
+
+        @media (max-width: 600px) {
+            .grid-pair {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            .container { padding: 2rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo-header">
+        <img src="logo kkg (1).png" alt="Logo KKG VI" class="logo-img">
+        
+        <h2>Rekap Data Susulan TKA</h2>
+    </div>
+
+    <form id="susulanForm">
+        <div class="form-group">
+            <label for="Sekolah">Nama Sekolah Dasar</label>
+            <input type="text" id="Sekolah" name="Sekolah" placeholder="Contoh: SDN 7 Pedungan" required>
+        </div>
+
+        <div class="grid-pair">
+            <div class="form-group">
+                <label for="TO1_BIN">TO 1 - Bahasa Indonesia</label>
+                <input type="number" id="TO1_BIN" name="TO1_BIN" min="0" value="0" required>
+            </div>
+            <div class="form-group">
+                <label for="TO1_MAT">TO 1 - Matematika</label>
+                <input type="number" id="TO1_MAT" name="TO1_MAT" min="0" value="0" required>
+            </div>
+        </div>
+
+        <div class="grid-pair">
+            <div class="form-group">
+                <label for="TO2_BIN">TO 2 - Bahasa Indonesia</label>
+                <input type="number" id="TO2_BIN" name="TO2_BIN" min="0" value="0" required>
+            </div>
+            <div class="form-group">
+                <label for="TO2_MAT">TO 2 - Matematika</label>
+                <input type="number" id="TO2_MAT" name="TO2_MAT" min="0" value="0" required>
+            </div>
+        </div>
+
+        <div class="grid-pair">
+            <div class="form-group">
+                <label for="TO3_BIN">TO 3 - Bahasa Indonesia</label>
+                <input type="number" id="TO3_BIN" name="TO3_BIN" min="0" value="0" required>
+            </div>
+            <div class="form-group">
+                <label for="TO3_MAT">TO 3 - Matematika</label>
+                <input type="number" id="TO3_MAT" name="TO3_MAT" min="0" value="0" required>
+            </div>
+        </div>
+
+        <button type="submit" id="submitBtn">Kirim Data</button>
+        <div id="statusMessage" class="alert"></div>
+    </form>
+</div>
+
+<script>
+    // URL Web App
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyyD_L1W3lp8Sl0kejAAjJAIXEJhyQlLYWrnJBXukKvPcCrdGmTtMBZD76F7MY_6Oa5/exec'; 
+    const form = document.getElementById('susulanForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const statusMessage = document.getElementById('statusMessage');
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        
+        // Status Loading
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Mengirim data...';
+        statusMessage.className = 'alert';
+        statusMessage.textContent = '';
+
+        // Format data menggunakan URLSearchParams
+        const data = new URLSearchParams(new FormData(form));
+
+        fetch(scriptURL, { 
+            method: 'POST', 
+            body: data
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Jaringan bermasalah');
+            return response.json();
+        })
+        .then(data => {
+            if (data.result === 'success') {
+                statusMessage.className = 'alert success';
+                statusMessage.textContent = 'Data berhasil direkap!';
+                form.reset();
+                resetNumbers();
+            } else {
+                throw new Error(data.error || 'Server error');
+            }
+        })
+        .catch(error => {
+            statusMessage.className = 'alert error';
+            statusMessage.textContent = 'Gagal mengirim data. Pastikan koneksi internet stabil.';
+            console.error('Detail Error:', error);
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Kirim Data';
+        });
+    });
+
+    // Reset input angka kembali ke 0
+    function resetNumbers() {
+        const numberInputs = document.querySelectorAll('input[type="number"]');
+        numberInputs.forEach(input => input.value = 0);
+    }
+</script>
+
+</body>
+</html>
